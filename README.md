@@ -6,20 +6,27 @@
 [![spm version][spm-badge]][spm-url]
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
+[![Gittip][gittip-image]][gittip-url]
+[![NPM downloads][npm-downloads]][npm-url]
+
 
 [npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/pinyin
+[npm-downloads]: http://img.shields.io/npm/dm/pinyin.svg?style=flat
 [spm-badge]: http://spmjs.io/badge/pinyin
 [spm-url]: http://spmjs.io/package/pinyin
-[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg
+[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg?branch=master
 [travis-url]: https://travis-ci.org/hotoo/pinyin
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
+[gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/hotoo/
+
+[English Documention](README-us_EN.md)
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
 > 注：这个版本同时支持在 Node 和 Web 浏览器环境运行，
-> 之前的 [hotoo/node-pinyin](https://github.com/hotoo/node-pinyin) 仓库即将下线。
 >
 > Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)
 
@@ -40,7 +47,7 @@ via npm:
 npm install pinyin
 ```
 
-via spm3:
+via spm:
 
 ```bash
 spm install pinyin
@@ -86,12 +93,14 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。
 
-### 参数 `<Boolean> options.segment`
+## 参数
+
+### `<Boolean> options.segment`
 
 是否启用分词模式，中文分词有助于极大的降低多音字问题。
 但性能会极大的下降，内存也会使用更多。
 
-### 参数 `<Boolean> options.heteronym`
+### `<Boolean> options.heteronym`
 
 是否启用多音字模式，默认关闭。
 
@@ -99,17 +108,19 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 启用多音字模式时，返回多音字的所有拼音列表。
 
-### 参数 `<Object> options.style`
+### `<Object> options.style`
 
 指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。
 
-### 静态属性 `.STYLE_NORMAL`
+## 静态属性
+
+### `.STYLE_NORMAL`
 
 普通风格，即不带音标。
 
 如：`pin yin`
 
-### 静态属性 `.STYLE_TONE`
+### `.STYLE_TONE`
 
 声调风格，拼音声调在韵母第一个字母上。
 
@@ -117,21 +128,19 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 如：`pīn yīn`
 
-### 静态属性 `.STYLE_TONE2`
+### `.STYLE_TONE2`
 
 声调风格 2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
 
 如：`pin1 yin1`
 
-### 静态属性 `.STYLE_INITIALS`
+### `.STYLE_INITIALS`
 
 声母风格，只返回各个拼音的声母部分。
 
 如：`中国` 的拼音 `zh g`
 
-例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。
-
-### 静态属性 `.STYLE_FIRST_LETTER`
+### `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
 
@@ -165,22 +174,20 @@ API 和使用方式完成一致。
 
 由于这些区别，测试不同运行环境的用例也不尽相同。
 
-### 为什么不使用更好的繁简转换？
+## 捐赠
 
-对于拼音来说，把繁简汉字做简单的映射并转换成拼音是合理的。
-而使用类似 [OpenCC](https://github.com/BYVoid/OpenCC)
-[cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更
-符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。
+如果这个模块有帮助到您，请 Star 这个仓库。
 
+你也可以选择使用支付宝或微信给我捐赠：
 
-## 参考
+![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](http://hotoo.me/images/donate-hotoo.png)
 
-* [在线汉语字典](http://zi.artx.cn/zi/)
-* [汉典网](http://www.zdic.net/)
-* [現代漢語語音語料庫](http://mmc.sinica.edu.tw/intro_c_01.html)
-* [快典网](http://py.kdd.cc/)
-* [将汉字转换成拼音](https://code.google.com/p/chinese-character-2-pinyin/)
-* [字符转拼音 javascript pinyin](http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html)
-  ([pinyin.rar](http://cid-80b2ed83de3c7c17.skydrive.live.com/self.aspx/Code/pinyin.rar))
-* [Javascript Input Method Editors](http://jsime.sourceforge.net/) ([中文](http://leen.name/ime/pinyin.html), [En](http://leen.name/ime/english.html))
-* [现在汉语的词汇数量及分布](http://blog.cathayan.org/item/1593)
+或者直接捐赠给我妻子 [@lizzie](https://github.com/lizzie)：
+
+![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
+
+这两种捐赠的最终结果是一样的 :)
+
+## 许可证
+
+[MIT](http://hotoo.mit-license.org/)

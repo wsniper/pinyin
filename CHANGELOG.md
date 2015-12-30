@@ -1,6 +1,24 @@
 
 # CHANGELOG
 
+## 2.6.2 (2015-08-25)
+
+* Add iojs-3 support. #60, #61, #62.
+
+## 2.6.1 (2015-08-23)
+
+* #57, #58 根据《汉语拼音方案》，`y`, `w`, 不是声母。
+* #56 `ü` (yu) 不是声母。
+
+## 2.6.0 (2015-08-12)
+
+* deps(nodejieba): nodejieba is optional dependency now. fixed #45.
+* test(eslint): update code style and test by eslint.
+
+## 2.5.1 (2015-08-01)
+
+* deps(nodejieba): upgrade nodejieba@1.2.2
+
 ## 2.5.0 (2015-06-18)
 
 * featute（分词）: 增加分词选项，默认不开启分词（不兼容选项） #45

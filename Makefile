@@ -34,15 +34,26 @@ benchmark:
 	@node tests/benchmark.test.js
 
 test-cli:
-	@mocha -R spec tests/cli.test.js
+	@mocha -R spec --timeout 5000 tests/cli.test.js
 
 test-npm:
-	@mocha -R spec tests/test.js
+	@./node_modules/.bin/istanbul cover \
+	./node_modules/.bin/_mocha \
+		-- \
+		--harmony \
+		--reporter spec \
+		--timeout 2000 \
+		--inline-diffs \
+		./tests/test.js
+
 
 test-spm:
 	@spm test
 
-test: test-npm test-spm test-cli benchmark
+lint:
+	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
+
+test: lint test-spm test-npm test-cli benchmark
 
 output = _site/coverage.html
 coverage: build-doc
@@ -74,4 +85,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: build-doc publish-doc server clean test coverage
+.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint benchmark
